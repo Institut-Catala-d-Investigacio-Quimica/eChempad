@@ -27,6 +27,11 @@ is git ignored).
 npm install --save bootstrap@latest react-cookie@latest react-router-dom@latest reactstrap@latest
 ```
 
+These are the recommended version for the dependencies:
+```bash
+npm install --save bootstrap@5.1 react-cookie@4.1.1 react-router-dom@5.3.0 reactstrap@8.10.0
+```
+
 
 
 Also add the line `import 'bootstrap/dist/css/bootstrap.min.css';` into `app/src/index.js`.
