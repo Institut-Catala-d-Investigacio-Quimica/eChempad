@@ -1,51 +1,34 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from './logo.svg';
-import './App.css';
 import React, { Component } from 'react';
+import './App.css';
+import Home from './Home';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ResearcherList from "./ResearcherList";
+import ResearcherEdit from "./ResearcherEdit";
 
+function getAuthorizationHeaderContent(user, password)
+{
+    const token = user + ":" + password;
 
+    // Should I be encoding this value????? does it matter???
+    // Base64 Encoding -> btoa
+    const hash = btoa(token);
+
+    return "Basic " + hash;
+}
 class App extends Component {
-  state = {
-    researchers: []
-  };
 
-  async componentDidMount() {
-    const response = await fetch('http://localhost:8081/api/researcher')
-        .then(response =>
-          {
-            if (!response.ok)
-            {
-              throw new Error(response.statusText)
-            }
-            return response.json()
-          }
-        ).catch(err =>
-          {
-            console.log(err)
-          }
-        );
-    const body = await response.json();
-    this.setState({researchers: body});
-  }
-
-  render() {
-    const {researchers} = this.state;
-    return (
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <div className="App-intro">
-              <h2>Researchers</h2>
-              {researchers.map(researcher =>
-                  <div key={researcher.id}>
-                    {researcher.username} ({researcher.email})
-                  </div>
-              )}
-            </div>
-          </header>
-        </div>
-    );
-  }
+    render() {
+        return (
+            <Router>
+                <Switch>
+                    <Route path='/' exact={true} component={Home}/>
+                    <Route path='/api/researcher' exact={true} component={ResearcherList}/>
+                    <Route path='/api/researcher/:id' component={ResearcherEdit}/>
+                </Switch>
+            </Router>
+        )
+    }
 }
 
 export default App;
