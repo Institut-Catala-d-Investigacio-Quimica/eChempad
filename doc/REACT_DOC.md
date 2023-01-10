@@ -2,13 +2,14 @@
 
 To create a React app using [this](https://www.baeldung.com/spring-boot-react-crud) guide.
 
-To create a React app issue the command with `npm` installed. You can install it by issuing the command:
+To create a React app issue the command with `npm` installed. You can install it by downloading the binaries from the
+download page:
 ```bash
 sudo apt install -y npm
 ```
 
 To initialize the `frontend` source folder, issue the following in the PATH where you want to initialize this folder. In 
-our case we will do it inside the folder `src/main/frontend`
+our case we will do it inside the folder `src/mnpm startain/frontend`
 
 ```bash
 npx create-react-app frontend
@@ -23,8 +24,10 @@ cd frontend
 Issue the following command to install Bootstrap, React router and reactstrap in the folder of dependencies (this folder
 is git ignored).
 ```bash
-npm install --save bootstrap@5.1 react-cookie@4.1.1 react-router-dom@5.3.0 reactstrap@8.10.0
+npm install --save bootstrap@latest react-cookie@latest react-router-dom@latest reactstrap@latest
 ```
+
+
 
 Also add the line `import 'bootstrap/dist/css/bootstrap.min.css';` into `app/src/index.js`.
 
